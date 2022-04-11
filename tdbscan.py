@@ -29,7 +29,7 @@ def T_DBSCAN(df, CEps,Eps, MinPts):
     for index, P in df.iterrows():        
         if index > MaxId:           
             
-            df.set_value(index, 'visited', 'visited')            
+            df.at[index, 'visited'] = 'visited'            
             #search for continuous density-based neighbours N
             N = getNeighbors(P, CEps, Eps, df, index)
             MaxId = index            
@@ -114,7 +114,7 @@ def updateClusters(df, Cp):
     
     for idx, val in Cp.items():
         for index in val:
-            df.set_value(index, 'cluster', idx)
+            df.at[index, 'cluster'] = idx
             
     return df
      
